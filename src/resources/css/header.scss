@@ -1,0 +1,123 @@
+.MyMenu {
+    font-family: "fantasy", serif;
+    font-size: small;
+}
+
+$menu-icon-line-height: 2px;
+$menu-icon-line-space: 5px;
+$menu-icon-line-offsetY: $menu-icon-line-height + $menu-icon-line-space;
+$menu-icon-height: (3*$menu-icon-line-height) + (4*$menu-icon-line-space);
+
+@media (max-width: 768px) {
+    $li-height: 20px;
+}
+
+#header-menu-icon {
+    &:hover div div{
+        background-color: black;
+    }
+}
+
+.menu-icon {
+    width: $menu-icon-height;
+    height: $menu-icon-height;
+    cursor: pointer;
+
+    :last-child {
+        margin-bottom: $menu-icon-line-space;
+    }
+
+    div {
+        box-sizing: border-box;
+        height: $menu-icon-line-height;
+        margin-top: $menu-icon-line-space;
+        border-radius: 3px;
+    }
+
+
+
+    .square_1 {
+        animation: anim_1_reverse 1s forwards;
+    }
+
+    .square_2 {
+        transition: background-color 0s, transform 1s;
+    }
+
+    .square_3 {
+        animation: anim_3_reverse 1s forwards;
+    }
+
+    &.active {
+        .square_1 {
+            animation: anim_1 1s forwards;
+        }
+
+        .square_2 {
+            transform: scale(0);
+        }
+
+        .square_3 {
+            animation: anim_3 1s forwards;
+        }
+    }
+}
+
+.no-animation {
+    -webkit-animation: none !important;
+    animation: none !important;
+}
+
+@keyframes anim_1 {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(0, $menu-icon-line-offsetY, 0) rotate(0);
+    }
+
+    100% {
+        transform: translate3d(0, $menu-icon-line-offsetY, 0) rotate(135deg);
+    }
+}
+
+@keyframes anim_3 {
+    0% {
+        transform: translate3d(0,0,0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate3d(0,-$menu-icon-line-offsetY, 0) rotate(0);
+    }
+
+    100% {
+        transform: translate3d(0,-$menu-icon-line-offsetY, 0) rotate(-135deg);
+    }
+}
+
+@keyframes anim_1_reverse {
+    0% {
+        transform: translate3d(0, $menu-icon-line-offsetY, 0) rotate(135deg);
+    }
+    50% {
+        transform: translate3d(0, $menu-icon-line-offsetY, 0) rotate(0);
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+}
+
+@keyframes anim_3_reverse {
+    0% {
+        transform: translate3d(0,-$menu-icon-line-offsetY, 0) rotate(-135deg);
+    }
+
+    50% {
+        transform: translate3d(0,-$menu-icon-line-offsetY, 0) rotate(0);
+    }
+
+    100% {
+        transform: translate3d(0,0,0) rotate(0deg);
+    }
+}
